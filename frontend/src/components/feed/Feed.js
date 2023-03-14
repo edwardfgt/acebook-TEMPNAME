@@ -35,7 +35,7 @@ const Feed = ({ navigate }) => {
 
   if (token) {
     return (
-      <>
+      <div className='feedContainer'>
         <CreatePost refreshPosts={refreshPosts} />
 
         {/* <button onClick={logout}>
@@ -48,7 +48,7 @@ const Feed = ({ navigate }) => {
             (post) => (<Post refreshPosts={refreshPosts} post={post} key={post._id} />)
           )}
         </div>
-      </>
+      </div>
     )
   } else {
     console.log('token does not exist');

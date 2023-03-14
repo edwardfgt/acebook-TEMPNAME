@@ -14,6 +14,7 @@ import CreatePost from '../CreatePost/CreatePost';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 import ForgottenPassword from '../forgottenPassword/forgottenPassword';
+import ProfielPage from '../profile/Profile';
 
 
 const App = () => {
@@ -22,33 +23,34 @@ const App = () => {
   // Token is declared here because it is needed in multiple components
   // setToken is passed into the login component so that token can be changed when the user signs in
   // Token is also needed in the navbar component for conditional rendering
-  
+
   const [token, setToken] = useState(window.localStorage.getItem("token"));
   useEffect(() => {
     handleUserInfo(window.localStorage.getItem("userInfo"))
   }, [])
 
   const logout = () => {
-      setToken('');
-      window.localStorage.removeItem("token")
-      window.localStorage.removeItem("userInfo")
-      handleUserInfo(null)
-    }
+    setToken('');
+    window.localStorage.removeItem("token")
+    window.localStorage.removeItem("userInfo")
+    handleUserInfo(null)
+    console.log("LOGGED OUT");
 
-    console.log("user context is: ", UserContext)
-    console.log("user info is: ", userInfo)
+  }
 
-    return (
-      <>
-          <Navbar logoutHandle={logout} token={token}/>
-          <Routes>
-            <Route path='/'  element={<Homepage navigate={ useNavigate() }/>}/>
-            <Route path='/login'  element={<LoginForm  navigate={ useNavigate() } setToken={setToken}/>}/>
-            <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
-            <Route path='/forgot-password' element={<ForgottenPassword navigate={ useNavigate() } setToken={setToken}/>}/>
-          </Routes>
-      </>
-    );
+
+  return (
+    <>
+      <Navbar logoutHandle={logout} token={token} />
+      <Routes>
+        <Route path='/' element={<Homepage navigate={useNavigate()} />} />
+        <Route path='/login' element={<LoginForm navigate={useNavigate()} setToken={setToken} />} />
+        <Route path='/signup' element={<SignUpForm navigate={useNavigate()} setToken={setToken} />} />
+        <Route path='/forgot-password' element={<ForgottenPassword navigate={useNavigate()} setToken={setToken} />} />
+        <Route path='/profile' element={<ProfielPage navigate={useNavigate()} setToken={setToken} />} />
+      </Routes>
+    </>
+  );
 }
 
 export default App;
