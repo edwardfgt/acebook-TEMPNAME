@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../profile/profile.css'
+import Post from '../post/Post'
 class ProfilePage extends Component {
   state = {}
   render() {
@@ -12,6 +13,7 @@ class ProfilePage extends Component {
           <div className="userProfileDetails">
             <div className='innerProfile'>
               <div className='profilePicture'>
+                {/* 🔽 This needs to be made dynamic so that the user can change it. */}
                 <img src='/Test-Profile-Picture.jpeg'></img>
               </div>
               <div className='userFullName'>
@@ -49,6 +51,10 @@ class ProfilePage extends Component {
                 </ul>
               </div>
             </nav>
+          </div>
+        </div>
+        <div id="feedContainer " className='container'>
+          <div className='feed'>
           </div>
         </div>
       </>
